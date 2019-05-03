@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Base64;
 import java.util.List;
+import java.util.Set;
 
 import static javax.persistence.CascadeType.ALL;
 
@@ -25,24 +26,30 @@ public class Attachment implements Serializable {
     @Column(name = "name", unique = false, nullable = false)
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name="message_id", referencedColumnName="message_id", nullable=false)
-    private Message message;
+//    @ManyToOne
+//    @JoinColumn(name="message_id", referencedColumnName="message_id", nullable=false)
+//    private Message message;
 
-    @OneToMany(cascade={ALL}, fetch=FetchType.LAZY, mappedBy = "attachment")
-    private List<Message> messages;
+//    @OneToMany(cascade={ALL}, fetch=FetchType.LAZY, mappedBy = "attachment")
+//    private Set<Message> messages;
 
     public Attachment() {
     }
 
-    public Attachment(Integer id, String data, String type, String name, Message message, List<Message> messages) {
-        this.id = id;
+    public Attachment(String data, String type, String name) {
         this.data = data;
         this.type = type;
         this.name = name;
-        this.message = message;
-        this.messages = messages;
     }
+
+    //    public Attachment(Integer id, String data, String type, String name, Message message, Set<Message> messages) {
+//        this.id = id;
+//        this.data = data;
+//        this.type = type;
+//        this.name = name;
+//        this.message = message;
+//        this.messages = messages;
+//    }
 
     public Integer getId() {
         return id;
@@ -76,21 +83,21 @@ public class Attachment implements Serializable {
         this.name = name;
     }
 
-    public Message getMessage() {
-        return message;
-    }
-
-    public void setMessage(Message message) {
-        this.message = message;
-    }
-
-    public List<Message> getMessages() {
-        return messages;
-    }
-
-    public void setMessages(List<Message> messages) {
-        this.messages = messages;
-    }
+//    public Message getMessage() {
+//        return message;
+//    }
+//
+//    public void setMessage(Message message) {
+//        this.message = message;
+//    }
+//
+//    public Set<Message> getMessages() {
+//        return messages;
+//    }
+//
+//    public void setMessages(Set<Message> messages) {
+//        this.messages = messages;
+//    }
 
     @Override
     public String toString() {
@@ -99,8 +106,8 @@ public class Attachment implements Serializable {
                 ", data=" + data +
                 ", type='" + type + '\'' +
                 ", name='" + name + '\'' +
-                ", message=" + message +
-                ", messages=" + messages +
+//                ", message=" + message +
+//                ", messages=" + messages +
                 '}';
     }
 }

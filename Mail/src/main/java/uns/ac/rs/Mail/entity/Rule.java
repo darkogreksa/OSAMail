@@ -22,7 +22,7 @@ public class Rule implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "rule_id", unique = true, nullable = false)
+    @Column(name = "rule_id")
     private Integer id;
 
     @Column(name = "condition", unique = false, nullable = false)

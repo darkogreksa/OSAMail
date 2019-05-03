@@ -18,7 +18,6 @@ public class Photo implements Serializable {
 //    @Column(name = "bitmap", unique = false, nullable = false)
 //    private Bitmap path;
 
-
     public Photo() {
     }
 

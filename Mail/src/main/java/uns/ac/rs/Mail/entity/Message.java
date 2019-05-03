@@ -37,22 +37,35 @@ public class Message implements Serializable {
     @Column(name = "content", unique = false, nullable = false)
     private String content;
 
-    @OneToMany(cascade={ALL}, fetch=FetchType.LAZY, mappedBy = "message")
-    private List<Attachment> attachments;
+    //@OneToMany(cascade={ALL}, fetch=FetchType.LAZY, mappedBy = "message")
+//    private List<Attachment> attachments;
 
-    @OneToMany(cascade={ALL}, fetch=FetchType.LAZY, mappedBy = "message")
-    private List<Tag> tags;
+  //  @OneToMany(cascade={ALL}, fetch=FetchType.LAZY, mappedBy = "message")
+//    private List<Tag> tags;
 
-    @ManyToOne
-    @JoinColumn(name="attachment_id", referencedColumnName="attachment_id", nullable=false)
-    private Attachment attachment;
+//    @ManyToOne
+//    @JoinColumn(name="attachment_id", referencedColumnName="attachment_id", nullable=false)
+//    private Attachment attachment;
 
-    @ManyToOne
-    @JoinColumn(name="folder_id", referencedColumnName="folder_id", nullable=false)
-    private Folder folder;
+//    @ManyToOne
+//    @JoinColumn(name="folder_id", referencedColumnName="folder_id", nullable=false)
+//    private Folder folder;
 
-    public Message(Integer id, String from, String to, String cc, String bcc, Date dateTime, String subject, String content, List<Attachment> attachments, List<Tag> tags, Attachment attachment, Folder folder) {
-        this.id = id;
+//    public Message(String from, String to, String cc, String bcc, Date dateTime, String subject, String content, List<Attachment> attachments, List<Tag> tags, Attachment attachment, Folder folder) {
+//        this.from = from;
+//        this.to = to;
+//        this.cc = cc;
+//        this.bcc = bcc;
+//        this.dateTime = dateTime;
+//        this.subject = subject;
+//        this.content = content;
+//        this.attachments = attachments;
+//        this.tags = tags;
+//        this.attachment = attachment;
+//        this.folder = folder;
+//    }
+
+    public Message(String from, String to, String cc, String bcc, Date dateTime, String subject, String content) {
         this.from = from;
         this.to = to;
         this.cc = cc;
@@ -60,10 +73,6 @@ public class Message implements Serializable {
         this.dateTime = dateTime;
         this.subject = subject;
         this.content = content;
-        this.attachments = attachments;
-        this.tags = tags;
-        this.attachment = attachment;
-        this.folder = folder;
     }
 
     public Message() {
@@ -133,37 +142,37 @@ public class Message implements Serializable {
         this.content = content;
     }
 
-    public List<Attachment> getAttachments() {
-        return attachments;
-    }
-
-    public void setAttachments(List<Attachment> attachments) {
-        this.attachments = attachments;
-    }
-
-    public List<Tag> getTags() {
-        return tags;
-    }
-
-    public void setTags(List<Tag> tags) {
-        this.tags = tags;
-    }
-
-    public Attachment getAttachment() {
-        return attachment;
-    }
-
-    public void setAttachment(Attachment attachment) {
-        this.attachment = attachment;
-    }
-
-    public Folder getFolder() {
-        return folder;
-    }
-
-    public void setFolder(Folder folder) {
-        this.folder = folder;
-    }
+//    public List<Attachment> getAttachments() {
+//        return attachments;
+//    }
+//
+//    public void setAttachments(List<Attachment> attachments) {
+//        this.attachments = attachments;
+//    }
+//
+//    public List<Tag> getTags() {
+//        return tags;
+//    }
+//
+//    public void setTags(List<Tag> tags) {
+//        this.tags = tags;
+//    }
+//
+//    public Attachment getAttachment() {
+//        return attachment;
+//    }
+//
+//    public void setAttachment(Attachment attachment) {
+//        this.attachment = attachment;
+//    }
+//
+//    public Folder getFolder() {
+//        return folder;
+//    }
+//
+//    public void setFolder(Folder folder) {
+//        this.folder = folder;
+//    }
 
     @Override
     public String toString() {
@@ -176,10 +185,10 @@ public class Message implements Serializable {
                 ", dateTime=" + dateTime +
                 ", subject='" + subject + '\'' +
                 ", content='" + content + '\'' +
-                ", attachments=" + attachments +
-                ", tags=" + tags +
-                ", attachment=" + attachment +
-                ", folder=" + folder +
+//                ", attachments=" + attachments +
+//                ", tags=" + tags +
+//                ", attachment=" + attachment +
+//                ", folder=" + folder +
                 '}';
     }
 }

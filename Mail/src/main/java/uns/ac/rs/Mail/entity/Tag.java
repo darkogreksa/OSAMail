@@ -18,14 +18,19 @@ public class Tag implements Serializable {
     @Column(name = "name", unique = false, nullable = false)
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name="message_id", referencedColumnName="message_id", nullable=false)
-    private Message message;
+//    @ManyToOne
+//    @JoinColumn(name="message_id", referencedColumnName="message_id", nullable=false)
+//    private Message message;
 
-    public Tag(Integer id, String name, Message message) {
+//    public Tag(Integer id, String name, Message message) {
+//        this.id = id;
+//        this.name = name;
+//        this.message = message;
+//    }
+
+    public Tag(Integer id, String name) {
         this.id = id;
         this.name = name;
-        this.message = message;
     }
 
     public Tag() {
@@ -46,21 +51,21 @@ public class Tag implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-
-    public Message getMessage() {
-        return message;
-    }
-
-    public void setMessage(Message message) {
-        this.message = message;
-    }
+//
+//    public Message getMessage() {
+//        return message;
+//    }
+//
+//    public void setMessage(Message message) {
+//        this.message = message;
+//    }
 
     @Override
     public String toString() {
         return "Tag{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", message=" + message +
+//                ", message=" + message +
                 '}';
     }
 }

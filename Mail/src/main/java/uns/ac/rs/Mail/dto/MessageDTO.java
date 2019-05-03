@@ -1,5 +1,7 @@
 package uns.ac.rs.Mail.dto;
 
+import uns.ac.rs.Mail.entity.Message;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -29,6 +31,10 @@ public class MessageDTO implements Serializable {
         this.content = content;
         this.attachment = attachment;
         this.folder = folder;
+    }
+
+    public MessageDTO(Message message) {
+        this(message.getId(), message.getFrom(), message.getTo(), message.getCc(), message.getBcc(), message.getDateTime(), message.getSubject(), message.getContent(), null, null);
     }
 
     public int getId() {

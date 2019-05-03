@@ -24,19 +24,25 @@ public class Folder implements Serializable {
     @Column(name = "subfolder", unique = false, nullable = false)
     private Folder subfolder;
 
-    @OneToMany(cascade={ALL}, fetch=FetchType.LAZY, mappedBy = "folder")
-    private List<Message> messages;
+    //@OneToMany(cascade={ALL}, fetch=FetchType.LAZY, mappedBy = "folder")
+//    private List<Message> messages;
 
     public Folder() {
     }
 
-    public Folder(Integer id, String name, Rule rule, Folder subfolder, List<Message> messages) {
-        this.id = id;
+    public Folder(String name, Rule rule, Folder subfolder) {
         this.name = name;
         this.rule = rule;
         this.subfolder = subfolder;
-        this.messages = messages;
     }
+
+    //    public Folder(Integer id, String name, Rule rule, Folder subfolder, List<Message> messages) {
+//        this.id = id;
+//        this.name = name;
+//        this.rule = rule;
+//        this.subfolder = subfolder;
+//        this.messages = messages;
+//    }
 
     public Integer getId() {
         return id;
@@ -70,13 +76,13 @@ public class Folder implements Serializable {
         this.subfolder = subfolder;
     }
 
-    public List<Message> getMessages() {
-        return messages;
-    }
-
-    public void setMessages(List<Message> messages) {
-        this.messages = messages;
-    }
+//    public List<Message> getMessages() {
+//        return messages;
+//    }
+//
+//    public void setMessages(List<Message> messages) {
+//        this.messages = messages;
+//    }
 
     @Override
     public String toString() {
@@ -85,7 +91,7 @@ public class Folder implements Serializable {
                 ", name='" + name + '\'' +
                 ", rule=" + rule +
                 ", subfolder=" + subfolder +
-                ", messages=" + messages +
+//                ", messages=" + messages +
                 '}';
     }
 }
