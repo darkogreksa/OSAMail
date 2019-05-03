@@ -1,5 +1,7 @@
 package uns.ac.rs.Mail.dto;
 
+import uns.ac.rs.Mail.entity.Account;
+
 import java.io.Serializable;
 
 public class AccountDTO implements Serializable {
@@ -20,6 +22,10 @@ public class AccountDTO implements Serializable {
         this.smtp = smtp;
         this.pop3 = pop3;
         this.email = email;
+    }
+
+    public AccountDTO(Account account) {
+        this(account.getId(), account.getUsername(), account.getPassword(), account.getSmtp(), account.getPop3(), account.getEmail());
     }
 
     public int getId() {

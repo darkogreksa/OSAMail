@@ -9,7 +9,7 @@ public class Photo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "message_id", unique = true, nullable = false)
+    @Column(name = "photo_id", unique = true, nullable = false)
     private Integer id;
 
     @Column(name = "path", unique = false, nullable = false)

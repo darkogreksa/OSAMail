@@ -17,7 +17,7 @@ public class Attachment implements Serializable {
     private Integer id;
 
     @Column(name = "data", unique = false, nullable = false)
-    private Base64 data;
+    private String data;
 
     @Column(name = "type", unique = false, nullable = false)
     private String type;
@@ -35,7 +35,7 @@ public class Attachment implements Serializable {
     public Attachment() {
     }
 
-    public Attachment(Integer id, Base64 data, String type, String name, Message message, List<Message> messages) {
+    public Attachment(Integer id, String data, String type, String name, Message message, List<Message> messages) {
         this.id = id;
         this.data = data;
         this.type = type;
@@ -52,11 +52,11 @@ public class Attachment implements Serializable {
         this.id = id;
     }
 
-    public Base64 getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Base64 data) {
+    public void setData(String data) {
         this.data = data;
     }
 
