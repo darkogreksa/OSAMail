@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.Base64;
 
 public class AttachmentDTO implements Serializable {
-    private int id;
-    private Base64 data;
+    private Long id;
+    private String data;
     private String type;
     private String name;
     private MessageDTO message;
@@ -13,7 +13,7 @@ public class AttachmentDTO implements Serializable {
     public AttachmentDTO() {
     }
 
-    public AttachmentDTO(int id, Base64 data, String type, String name, MessageDTO message) {
+    public AttachmentDTO(Long id, String data, String type, String name, MessageDTO message) {
         this.id = id;
         this.data = data;
         this.type = type;
@@ -21,19 +21,19 @@ public class AttachmentDTO implements Serializable {
         this.message = message;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Base64 getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Base64 data) {
+    public void setData(String data) {
         this.data = data;
     }
 

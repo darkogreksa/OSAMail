@@ -5,24 +5,22 @@ import uns.ac.rs.Mail.entity.Message;
 import java.io.Serializable;
 
 public class TagDTO implements Serializable {
-    private int id;
+    private Long id;
     private String name;
-    private Message message;
 
     public TagDTO() {
     }
 
-    public TagDTO(int id, String name, Message message) {
+    public TagDTO(Long id, String name) {
         this.id = id;
         this.name = name;
-        this.message = message;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -32,13 +30,5 @@ public class TagDTO implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Message getMessage() {
-        return message;
-    }
-
-    public void setMessage(Message message) {
-        this.message = message;
     }
 }

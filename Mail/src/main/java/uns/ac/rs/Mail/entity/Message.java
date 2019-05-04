@@ -3,7 +3,9 @@ package uns.ac.rs.Mail.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static javax.persistence.CascadeType.ALL;
 
@@ -14,7 +16,7 @@ public class Message implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "message_id", unique = true, nullable = false)
-    private Integer id;
+    private Long id;
 
     @Column(name = "from", unique = false, nullable = false)
     private String from;
@@ -37,35 +39,28 @@ public class Message implements Serializable {
     @Column(name = "content", unique = false, nullable = false)
     private String content;
 
-    //@OneToMany(cascade={ALL}, fetch=FetchType.LAZY, mappedBy = "message")
-//    private List<Attachment> attachments;
+    @Column(name = "unread", unique = false, nullable = false)
+    private Boolean unread;
 
-  //  @OneToMany(cascade={ALL}, fetch=FetchType.LAZY, mappedBy = "message")
-//    private List<Tag> tags;
+    @Column(name = "message_tag", unique = false, nullable = false)
+    private Tag messageTag;
 
-//    @ManyToOne
-//    @JoinColumn(name="attachment_id", referencedColumnName="attachment_id", nullable=false)
-//    private Attachment attachment;
+    @OneToMany(cascade={ALL}, fetch=FetchType.LAZY, mappedBy = "attachment")
+    private Set<Attachment> messageAttachment = new HashSet<Attachment>();
 
-//    @ManyToOne
-//    @JoinColumn(name="folder_id", referencedColumnName="folder_id", nullable=false)
-//    private Folder folder;
+    @ManyToOne
+    @JoinColumn(name="account_id", referencedColumnName="account_id", nullable=false)
+    private Account account;
 
-//    public Message(String from, String to, String cc, String bcc, Date dateTime, String subject, String content, List<Attachment> attachments, List<Tag> tags, Attachment attachment, Folder folder) {
-//        this.from = from;
-//        this.to = to;
-//        this.cc = cc;
-//        this.bcc = bcc;
-//        this.dateTime = dateTime;
-//        this.subject = subject;
-//        this.content = content;
-//        this.attachments = attachments;
-//        this.tags = tags;
-//        this.attachment = attachment;
-//        this.folder = folder;
-//    }
+    @ManyToOne
+    @JoinColumn(name="folder_id", referencedColumnName="folder_id", nullable=false)
+    private Folder folder;
 
-    public Message(String from, String to, String cc, String bcc, Date dateTime, String subject, String content) {
+    public Message() {
+    }
+
+    public Message(Long id, String from, String to, String cc, String bcc, Date dateTime, String subject, String content, Boolean unread, Tag messageTag, Set<Attachment> messageAttachment, Account account, Folder folder) {
+        this.id = id;
         this.from = from;
         this.to = to;
         this.cc = cc;
@@ -73,16 +68,18 @@ public class Message implements Serializable {
         this.dateTime = dateTime;
         this.subject = subject;
         this.content = content;
+        this.unread = unread;
+        this.messageTag = messageTag;
+        this.messageAttachment = messageAttachment;
+        this.account = account;
+        this.folder = folder;
     }
 
-    public Message() {
-    }
-
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -142,37 +139,45 @@ public class Message implements Serializable {
         this.content = content;
     }
 
-//    public List<Attachment> getAttachments() {
-//        return attachments;
-//    }
-//
-//    public void setAttachments(List<Attachment> attachments) {
-//        this.attachments = attachments;
-//    }
-//
-//    public List<Tag> getTags() {
-//        return tags;
-//    }
-//
-//    public void setTags(List<Tag> tags) {
-//        this.tags = tags;
-//    }
-//
-//    public Attachment getAttachment() {
-//        return attachment;
-//    }
-//
-//    public void setAttachment(Attachment attachment) {
-//        this.attachment = attachment;
-//    }
-//
-//    public Folder getFolder() {
-//        return folder;
-//    }
-//
-//    public void setFolder(Folder folder) {
-//        this.folder = folder;
-//    }
+    public Boolean getUnread() {
+        return unread;
+    }
+
+    public void setUnread(Boolean unread) {
+        this.unread = unread;
+    }
+
+    public Tag getMessageTag() {
+        return messageTag;
+    }
+
+    public void setMessageTag(Tag messageTag) {
+        this.messageTag = messageTag;
+    }
+
+    public Set<Attachment> getMessageAttachment() {
+        return messageAttachment;
+    }
+
+    public void setMessageAttachment(Set<Attachment> messageAttachment) {
+        this.messageAttachment = messageAttachment;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public Folder getFolder() {
+        return folder;
+    }
+
+    public void setFolder(Folder folder) {
+        this.folder = folder;
+    }
 
     @Override
     public String toString() {
@@ -185,10 +190,11 @@ public class Message implements Serializable {
                 ", dateTime=" + dateTime +
                 ", subject='" + subject + '\'' +
                 ", content='" + content + '\'' +
-//                ", attachments=" + attachments +
-//                ", tags=" + tags +
-//                ", attachment=" + attachment +
-//                ", folder=" + folder +
+                ", unread=" + unread +
+                ", messageTag=" + messageTag +
+                ", messageAttachment=" + messageAttachment +
+                ", account=" + account +
+                ", folder=" + folder +
                 '}';
     }
 }

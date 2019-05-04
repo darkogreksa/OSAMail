@@ -6,32 +6,30 @@ import uns.ac.rs.Mail.entity.Photo;
 import java.io.Serializable;
 
 public class ContactDTO implements Serializable {
-    private int id;
+    private Long id;
     private String firstname;
     private String lastname;
     private String email;
     private String display;
-    private Contact.Format format;
-    private Photo photo;
+    private String note;
 
     public ContactDTO() {
     }
 
-    public ContactDTO(int id, String firstname, String lastname, String email, String display, Contact.Format format, Photo photo) {
+    public ContactDTO(Long id, String firstname, String lastname, String email, String display, String note) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.display = display;
-        this.format = format;
-        this.photo = photo;
+        this.note = note;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -67,19 +65,11 @@ public class ContactDTO implements Serializable {
         this.display = display;
     }
 
-    public Contact.Format getFormat() {
-        return format;
+    public String getNote() {
+        return note;
     }
 
-    public void setFormat(Contact.Format format) {
-        this.format = format;
-    }
-
-    public Photo getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(Photo photo) {
-        this.photo = photo;
+    public void setNote(String note) {
+        this.note = note;
     }
 }

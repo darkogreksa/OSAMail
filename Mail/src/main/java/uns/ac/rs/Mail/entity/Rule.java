@@ -17,13 +17,13 @@ public class Rule implements Serializable {
     public enum Operation {
         MOVE,
         COPY,
-        PASTE
+        DELETE
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "rule_id")
-    private Integer id;
+    private Long id;
 
     @Column(name = "condition", unique = false, nullable = false)
     private Condition condition;
@@ -34,17 +34,17 @@ public class Rule implements Serializable {
     public Rule() {
     }
 
-    public Rule(Integer id, Condition condition, Operation operation) {
+    public Rule(Long id, Condition condition, Operation operation) {
         this.id = id;
         this.condition = condition;
         this.operation = operation;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

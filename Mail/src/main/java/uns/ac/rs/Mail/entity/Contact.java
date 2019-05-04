@@ -2,21 +2,25 @@ package uns.ac.rs.Mail.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+
+import static javax.persistence.CascadeType.ALL;
 
 @Entity
 @Table(name = "contact")
 public class Contact implements Serializable {
 
-    public enum Format{
-        PLAIN,
-        HTML
-    }
+//    public enum Format{
+//        PLAIN,
+//        HTML
+//    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "contact_id", unique = true, nullable = false)
-    private Integer id;
+    private Long id;
 
     @Column(name = "first_name", unique = false, nullable = false)
     private String firstName;
@@ -30,30 +34,41 @@ public class Contact implements Serializable {
     @Column(name = "display", unique = false, nullable = false)
     private String display;
 
-    @Column(name = "format", unique = false, nullable = false)
-    private Format format;
+    @Column(name = "note", unique = false, nullable = false)
+    private String note;
 
-    @Column(name = "photo", unique = false, nullable = false)
-    private Photo photo;
+//    @Column(name = "format", unique = false, nullable = false)
+//    private Format format;
 
-    public Contact(Integer id, String firstName, String lastName, String email, String display, Format format, Photo photo) {
+    @OneToMany(cascade={ALL}, fetch=FetchType.LAZY, mappedBy = "contact")
+    private Set<Photo> contactPhoto = new HashSet<Photo>();
+
+    public Contact(Long id, String firstName, String lastName, String email, String display, String note) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.display = display;
-        this.format = format;
-        this.photo = photo;
+    }
+
+    public Contact(Long id, String firstName, String lastName, String email, String display, String note, Set<Photo> contactPhoto) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.display = display;
+        this.note = note;
+        this.contactPhoto = contactPhoto;
     }
 
     public Contact() {
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -89,20 +104,20 @@ public class Contact implements Serializable {
         this.display = display;
     }
 
-    public Format getFormat() {
-        return format;
+    public String getNote() {
+        return note;
     }
 
-    public void setFormat(Format format) {
-        this.format = format;
+    public void setNote(String note) {
+        this.note = note;
     }
 
-    public Photo getPhoto() {
-        return photo;
+    public Set<Photo> getContactPhoto() {
+        return contactPhoto;
     }
 
-    public void setPhoto(Photo photo) {
-        this.photo = photo;
+    public void setContactPhoto(Set<Photo> contactPhoto) {
+        this.contactPhoto = contactPhoto;
     }
 
     @Override
@@ -113,7 +128,8 @@ public class Contact implements Serializable {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", display='" + display + '\'' +
-                ", format=" + format +
+                ", note='" + note + '\'' +
+                ", contactPhoto=" + contactPhoto +
                 '}';
     }
 }

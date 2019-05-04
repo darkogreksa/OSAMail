@@ -5,35 +5,77 @@ import uns.ac.rs.Mail.entity.Account;
 import java.io.Serializable;
 
 public class AccountDTO implements Serializable {
-    private int id;
+    private Long id;
+    private String smtpAddress;
+    private Integer smtpPort;
+    private Integer inServerType;
+    private String inServerAddress;
+    private Integer inServerPort;
     private String username;
     private String password;
-    private String smtp;
-    private String pop3;
-    private String email;
+    private String displayName;
 
     public AccountDTO() {
     }
 
-    public AccountDTO(int id, String username, String password, String smtp, String pop3, String email) {
+    public AccountDTO(Long id, String smtpAddress, Integer smtpPort, Integer inServerType, String inServerAddress, Integer inServerPort, String username, String password, String displayName) {
         this.id = id;
+        this.smtpAddress = smtpAddress;
+        this.smtpPort = smtpPort;
+        this.inServerType = inServerType;
+        this.inServerAddress = inServerAddress;
+        this.inServerPort = inServerPort;
         this.username = username;
         this.password = password;
-        this.smtp = smtp;
-        this.pop3 = pop3;
-        this.email = email;
+        this.displayName = displayName;
     }
 
-    public AccountDTO(Account account) {
-        this(account.getId(), account.getUsername(), account.getPassword(), account.getSmtp(), account.getPop3(), account.getEmail());
-    }
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getSmtpAddress() {
+        return smtpAddress;
+    }
+
+    public void setSmtpAddress(String smtpAddress) {
+        this.smtpAddress = smtpAddress;
+    }
+
+    public Integer getSmtpPort() {
+        return smtpPort;
+    }
+
+    public void setSmtpPort(Integer smtpPort) {
+        this.smtpPort = smtpPort;
+    }
+
+    public Integer getInServerType() {
+        return inServerType;
+    }
+
+    public void setInServerType(Integer inServerType) {
+        this.inServerType = inServerType;
+    }
+
+    public String getInServerAddress() {
+        return inServerAddress;
+    }
+
+    public void setInServerAddress(String inServerAddress) {
+        this.inServerAddress = inServerAddress;
+    }
+
+    public Integer getInServerPort() {
+        return inServerPort;
+    }
+
+    public void setInServerPort(Integer inServerPort) {
+        this.inServerPort = inServerPort;
     }
 
     public String getUsername() {
@@ -52,27 +94,11 @@ public class AccountDTO implements Serializable {
         this.password = password;
     }
 
-    public String getSmtp() {
-        return smtp;
+    public String getDisplayName() {
+        return displayName;
     }
 
-    public void setSmtp(String smtp) {
-        this.smtp = smtp;
-    }
-
-    public String getPop3() {
-        return pop3;
-    }
-
-    public void setPop3(String pop3) {
-        this.pop3 = pop3;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
 }

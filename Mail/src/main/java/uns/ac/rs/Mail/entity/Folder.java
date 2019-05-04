@@ -2,7 +2,9 @@ package uns.ac.rs.Mail.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static javax.persistence.CascadeType.ALL;
 
@@ -13,42 +15,41 @@ public class Folder implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "folder_id", unique = true, nullable = false)
-    private Integer id;
+    private Long id;
 
     @Column(name = "name", unique = false, nullable = false)
     private String name;
 
-    @Column(name = "rule", unique = false, nullable = false)
-    private Rule rule;
+    @Column(name = "destination", unique = false, nullable = false)
+    private Rule destination;
 
-    @Column(name = "subfolder", unique = false, nullable = false)
-    private Folder subfolder;
+    @Column(name = "parent_folder", unique = false, nullable = false)
+    private Folder parentFolder;
 
-    //@OneToMany(cascade={ALL}, fetch=FetchType.LAZY, mappedBy = "folder")
-//    private List<Message> messages;
+    @ManyToOne
+    @JoinColumn(name="account_id", referencedColumnName="account_id", nullable=false)
+    private Account account;
+
+    @OneToMany(cascade={ALL}, fetch=FetchType.LAZY, mappedBy = "message")
+    private Set<Message> folderMessage = new HashSet<Message>();
 
     public Folder() {
     }
 
-    public Folder(String name, Rule rule, Folder subfolder) {
+    public Folder(Long id, String name, Rule destination, Folder parentFolder, Account account, Set<Message> folderMessage) {
+        this.id = id;
         this.name = name;
-        this.rule = rule;
-        this.subfolder = subfolder;
+        this.destination = destination;
+        this.parentFolder = parentFolder;
+        this.account = account;
+        this.folderMessage = folderMessage;
     }
 
-    //    public Folder(Integer id, String name, Rule rule, Folder subfolder, List<Message> messages) {
-//        this.id = id;
-//        this.name = name;
-//        this.rule = rule;
-//        this.subfolder = subfolder;
-//        this.messages = messages;
-//    }
-
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -60,38 +61,47 @@ public class Folder implements Serializable {
         this.name = name;
     }
 
-    public Rule getRule() {
-        return rule;
+    public Rule getDestination() {
+        return destination;
     }
 
-    public void setRule(Rule rule) {
-        this.rule = rule;
+    public void setDestination(Rule destination) {
+        this.destination = destination;
     }
 
-    public Folder getSubfolder() {
-        return subfolder;
+    public Folder getParentFolder() {
+        return parentFolder;
     }
 
-    public void setSubfolder(Folder subfolder) {
-        this.subfolder = subfolder;
+    public void setParentFolder(Folder parentFolder) {
+        this.parentFolder = parentFolder;
     }
 
-//    public List<Message> getMessages() {
-//        return messages;
-//    }
-//
-//    public void setMessages(List<Message> messages) {
-//        this.messages = messages;
-//    }
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public Set<Message> getFolderMessage() {
+        return folderMessage;
+    }
+
+    public void setFolderMessage(Set<Message> folderMessage) {
+        this.folderMessage = folderMessage;
+    }
 
     @Override
     public String toString() {
         return "Folder{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", rule=" + rule +
-                ", subfolder=" + subfolder +
-//                ", messages=" + messages +
+                ", destination=" + destination +
+                ", parentFolder=" + parentFolder +
+                ", account=" + account +
+                ", folderMessage=" + folderMessage +
                 '}';
     }
 }

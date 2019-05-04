@@ -10,27 +10,29 @@ public class Photo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "photo_id", unique = true, nullable = false)
-    private Integer id;
+    private Long id;
 
     @Column(name = "path", unique = false, nullable = false)
     private String path;
 
-//    @Column(name = "bitmap", unique = false, nullable = false)
-//    private Bitmap path;
+    @ManyToOne
+    @JoinColumn(name="contact_id", referencedColumnName="contact_id", nullable=false)
+    private Contact contact;
 
     public Photo() {
     }
 
-    public Photo(Integer id, String path) {
+    public Photo(Long id, String path, Contact contact) {
         this.id = id;
         this.path = path;
+        this.contact = contact;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -40,5 +42,22 @@ public class Photo implements Serializable {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public Contact getContact() {
+        return contact;
+    }
+
+    public void setContact(Contact contact) {
+        this.contact = contact;
+    }
+
+    @Override
+    public String toString() {
+        return "Photo{" +
+                "id=" + id +
+                ", path='" + path + '\'' +
+                ", contact=" + contact +
+                '}';
     }
 }
