@@ -38,6 +38,11 @@ public class MessageDTO implements Serializable {
         this.folder = folder;
     }
 
+    public MessageDTO(Message message) {
+        this(message.getId(), message.getFrom(), message.getTo(), message.getCc(), message.getBcc(), message.getDateTime(), message.getSubject(), message.getContent(), message.getUnread(), message.getMessageTag(), new AccountDTO(message.getAccount()), new FolderDTO(message.getFolder()) );
+    }
+
+
     public Long getId() {
         return id;
     }

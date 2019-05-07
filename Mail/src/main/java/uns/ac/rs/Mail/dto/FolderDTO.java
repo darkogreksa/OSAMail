@@ -23,6 +23,10 @@ public class FolderDTO implements Serializable {
         this.account = account;
     }
 
+    public FolderDTO(Folder folder) {
+        this(folder.getId(), folder.getName(), folder.getDestination(), folder.getParentFolder(), new AccountDTO(folder.getAccount()));
+    }
+
     public Long getId() {
         return id;
     }

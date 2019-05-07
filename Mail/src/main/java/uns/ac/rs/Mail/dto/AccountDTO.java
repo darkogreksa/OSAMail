@@ -30,6 +30,10 @@ public class AccountDTO implements Serializable {
         this.displayName = displayName;
     }
 
+    public AccountDTO(Account account) {
+        this(account.getId(), account.getSmtpAddress(),account.getSmtpPort(),account.getInServerType(), account.getInServerAddress(), account.getInServerPort(), account.getUsername(), account.getPassword(), account.getDisplayName());
+    }
+
     public Long getId() {
         return id;
     }
