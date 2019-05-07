@@ -43,11 +43,8 @@ public class AccountController {
     @GetMapping(value="{username}/{password}")
     public ResponseEntity<AccountDTO> login(@PathVariable("username") String username, @PathVariable("password") String password){
         Account account = accountService.findByUsernameAndPassword(username, password);
-        System.out.println("NESTOOOOOOOOOOOOOOOOOOOOOOO " + account.toString());
         if(account != null) {
-            System.out.println("AAAAAAAAAAAAAAAAA " + account.toString());
             return new ResponseEntity<AccountDTO>(new AccountDTO(account), HttpStatus.OK);
-
         }
         return new ResponseEntity<AccountDTO>(HttpStatus.NOT_FOUND);
     }
@@ -57,7 +54,6 @@ public class AccountController {
         Account account = accountService.findByUsername(username);
         if(account != null) {
             return new ResponseEntity<AccountDTO>(new AccountDTO(account), HttpStatus.OK);
-
         }
         return new ResponseEntity<AccountDTO>(HttpStatus.NOT_FOUND);
     }

@@ -30,7 +30,7 @@ public class Folder implements Serializable {
     @JoinColumn(name="account_id", referencedColumnName="account_id", nullable=false)
     private Account account;
 
-    @OneToMany(cascade={ALL}, fetch=FetchType.LAZY, mappedBy = "message")
+    @OneToMany(cascade={ALL}, fetch=FetchType.LAZY, mappedBy = "folder")
     private Set<Message> folderMessage = new HashSet<Message>();
 
     public Folder() {

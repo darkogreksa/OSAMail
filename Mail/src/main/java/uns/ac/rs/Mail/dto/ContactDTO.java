@@ -25,6 +25,10 @@ public class ContactDTO implements Serializable {
         this.note = note;
     }
 
+    public ContactDTO(Contact contact) {
+        this(contact.getId(), contact.getFirstName(), contact.getLastName(), contact.getEmail(), contact.getDisplay(), contact.getNote());
+    }
+
     public Long getId() {
         return id;
     }

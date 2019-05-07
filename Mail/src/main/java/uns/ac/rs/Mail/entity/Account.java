@@ -40,10 +40,10 @@ public class Account implements Serializable {
     @Column(name = "display_name", unique = false, nullable = false)
     private String displayName;
 
-    @OneToMany(cascade={ALL}, fetch=FetchType.LAZY, mappedBy = "message")
+    @OneToMany(cascade={ALL}, fetch=FetchType.LAZY, mappedBy = "account")
     private Set<Message> accountMessage = new HashSet<Message>();
 
-    @OneToMany(cascade={ALL}, fetch=FetchType.LAZY, mappedBy = "folder")
+    @OneToMany(cascade={ALL}, fetch=FetchType.LAZY, mappedBy = "account")
     private Set<Folder> accountFolder = new HashSet<Folder>();
 
     public Account(Long id, String smtpAddress, Integer smtpPort, Integer inServerType, String inServerAddress, Integer inServerPort, String username, String password, String displayName, Set<Message> accountMessage, Set<Folder> accountFolder) {

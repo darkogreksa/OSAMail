@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface MessageServiceInterface {
 
+    Message findOne(Integer msgId);
+    List<Message> findAll();
     List<Message> findAllOrderByDate();
 
 }

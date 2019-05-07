@@ -15,7 +15,18 @@ public class MessageService implements MessageServiceInterface {
     MessageRepository messageRepository;
 
     @Override
+    public Message findOne(Integer msgId) {
+        return messageRepository.findById(msgId).get();
+    }
+
+    @Override
+    public List<Message> findAll() {
+        return messageRepository.findAll();
+    }
+
+    @Override
     public List<Message> findAllOrderByDate() {
         return messageRepository.findAllByOrderByDateTime();
     }
+
 }

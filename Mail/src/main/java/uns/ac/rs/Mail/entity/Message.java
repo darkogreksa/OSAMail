@@ -45,7 +45,7 @@ public class Message implements Serializable {
     @Column(name = "message_tag", unique = false, nullable = false)
     private Tag messageTag;
 
-    @OneToMany(cascade={ALL}, fetch=FetchType.LAZY, mappedBy = "attachment")
+    @OneToMany(cascade={ALL}, fetch=FetchType.LAZY, mappedBy = "message")
     private Set<Attachment> messageAttachment = new HashSet<Attachment>();
 
     @ManyToOne

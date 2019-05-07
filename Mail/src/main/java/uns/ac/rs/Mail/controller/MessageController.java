@@ -20,6 +20,16 @@ public class MessageController {
     @Autowired
     MessageServiceInterface messageService;
 
+    @GetMapping(value="/all")
+    public ResponseEntity<List<MessageDTO>> getAccounts(){
+        List<Message> messages = messageService.findAll();
+        List<MessageDTO> messageDTO = new ArrayList<MessageDTO>();
+        for (Message m : messages) {
+            messageDTO.add(new MessageDTO(m));
+        }
+        return new ResponseEntity<List<MessageDTO>>(messageDTO, HttpStatus.OK);
+    }
+
     @GetMapping("/order")
     public ResponseEntity<List<MessageDTO>> orderByDate(){
         List<Message> messages = messageService.findAllOrderByDate();
@@ -27,7 +37,6 @@ public class MessageController {
         for (Message m : messages){
             messageDTOS.add(new MessageDTO(m));
         }
-
         return new ResponseEntity<>(messageDTOS, HttpStatus.OK);
     }
 
