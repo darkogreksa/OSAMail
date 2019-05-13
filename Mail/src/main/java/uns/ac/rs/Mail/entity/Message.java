@@ -18,10 +18,10 @@ public class Message implements Serializable {
     @Column(name = "message_id", unique = true, nullable = false)
     private Long id;
 
-    @Column(name = "from", unique = false, nullable = false)
+    @Column(name = "from1", unique = false, nullable = false)
     private String from;
 
-    @Column(name = "to", unique = false, nullable = false)
+    @Column(name = "to1", unique = false, nullable = false)
     private String to;
 
     @Column(name = "cc", unique = false, nullable = false)

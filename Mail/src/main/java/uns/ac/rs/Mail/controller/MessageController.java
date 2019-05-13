@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/message")
+@RequestMapping("/api/messages")
 public class MessageController {
 
     @Autowired
