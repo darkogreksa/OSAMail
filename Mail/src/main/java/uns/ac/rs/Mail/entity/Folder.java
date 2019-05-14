@@ -24,25 +24,25 @@ public class Folder implements Serializable {
     private Rule destination;
 
     @Column(name = "parent_folder", unique = false, nullable = false)
-    private Folder parentFolder;
+    private Double parentFolder;
 
-    @ManyToOne
-    @JoinColumn(name="account_id", referencedColumnName="account_id", nullable=false)
-    private Account account;
+//    @ManyToOne
+//    @JoinColumn(name="account_id", referencedColumnName="account_id", nullable=false)
+//    private Account account;
 
-    @OneToMany(cascade={ALL}, fetch=FetchType.LAZY, mappedBy = "folder")
-    private Set<Message> folderMessage = new HashSet<Message>();
+//    @OneToMany(cascade={ALL}, fetch=FetchType.LAZY, mappedBy = "folder")
+//    private Set<Message> folderMessage = new HashSet<Message>();
 
     public Folder() {
     }
 
-    public Folder(Long id, String name, Rule destination, Folder parentFolder, Account account, Set<Message> folderMessage) {
+    public Folder(Long id, String name, Rule destination, Double parentFolder) {
         this.id = id;
         this.name = name;
         this.destination = destination;
         this.parentFolder = parentFolder;
-        this.account = account;
-        this.folderMessage = folderMessage;
+//        this.account = account;
+//        this.folderMessage = folderMessage;
     }
 
     public Long getId() {
@@ -69,29 +69,29 @@ public class Folder implements Serializable {
         this.destination = destination;
     }
 
-    public Folder getParentFolder() {
+    public Double getParentFolder() {
         return parentFolder;
     }
 
-    public void setParentFolder(Folder parentFolder) {
+    public void setParentFolder(Double parentFolder) {
         this.parentFolder = parentFolder;
     }
 
-    public Account getAccount() {
-        return account;
-    }
+//    public Account getAccount() {
+//        return account;
+//    }
+//
+//    public void setAccount(Account account) {
+//        this.account = account;
+//    }
 
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
-    public Set<Message> getFolderMessage() {
-        return folderMessage;
-    }
-
-    public void setFolderMessage(Set<Message> folderMessage) {
-        this.folderMessage = folderMessage;
-    }
+//    public Set<Message> getFolderMessage() {
+//        return folderMessage;
+//    }
+//
+//    public void setFolderMessage(Set<Message> folderMessage) {
+//        this.folderMessage = folderMessage;
+//    }
 
     @Override
     public String toString() {
@@ -99,9 +99,9 @@ public class Folder implements Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", destination=" + destination +
-                ", parentFolder=" + parentFolder +
-                ", account=" + account +
-                ", folderMessage=" + folderMessage +
+//                ", parentFolder=" + parentFolder +
+//                ", account=" + account +
+//                ", folderMessage=" + folderMessage +
                 '}';
     }
 }

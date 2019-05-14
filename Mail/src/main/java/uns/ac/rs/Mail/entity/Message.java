@@ -43,23 +43,23 @@ public class Message implements Serializable {
     private Boolean unread;
 
     @Column(name = "message_tag", unique = false, nullable = false)
-    private Tag messageTag;
+    private Double messageTag;
 
     @OneToMany(cascade={ALL}, fetch=FetchType.LAZY, mappedBy = "message")
     private Set<Attachment> messageAttachment = new HashSet<Attachment>();
 
-    @ManyToOne
-    @JoinColumn(name="account_id", referencedColumnName="account_id", nullable=false)
-    private Account account;
+//    @ManyToOne
+//    @JoinColumn(name="account_id", referencedColumnName="account_id")
+//    private Account account;
 
-    @ManyToOne
-    @JoinColumn(name="folder_id", referencedColumnName="folder_id", nullable=false)
-    private Folder folder;
+//    @ManyToOne
+//    @JoinColumn(name="folder_id", referencedColumnName="folder_id")
+//    private Folder folder;
 
     public Message() {
     }
 
-    public Message(Long id, String from, String to, String cc, String bcc, Date dateTime, String subject, String content, Boolean unread, Tag messageTag, Set<Attachment> messageAttachment, Account account, Folder folder) {
+    public Message(Long id, String from, String to, String cc, String bcc, Date dateTime, String subject, String content, Boolean unread, Double messageTag, Set<Attachment> messageAttachment) {
         this.id = id;
         this.from = from;
         this.to = to;
@@ -71,8 +71,8 @@ public class Message implements Serializable {
         this.unread = unread;
         this.messageTag = messageTag;
         this.messageAttachment = messageAttachment;
-        this.account = account;
-        this.folder = folder;
+//        this.account = account;
+//        this.folder = folder;
     }
 
     public Long getId() {
@@ -147,11 +147,11 @@ public class Message implements Serializable {
         this.unread = unread;
     }
 
-    public Tag getMessageTag() {
+    public Double getMessageTag() {
         return messageTag;
     }
 
-    public void setMessageTag(Tag messageTag) {
+    public void setMessageTag(Double messageTag) {
         this.messageTag = messageTag;
     }
 
@@ -163,21 +163,21 @@ public class Message implements Serializable {
         this.messageAttachment = messageAttachment;
     }
 
-    public Account getAccount() {
-        return account;
-    }
+//    public Account getAccount() {
+//        return account;
+//    }
+//
+//    public void setAccount(Account account) {
+//        this.account = account;
+//    }
 
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
-    public Folder getFolder() {
-        return folder;
-    }
-
-    public void setFolder(Folder folder) {
-        this.folder = folder;
-    }
+//    public Folder getFolder() {
+//        return folder;
+//    }
+//
+//    public void setFolder(Folder folder) {
+//        this.folder = folder;
+//    }
 
     @Override
     public String toString() {
@@ -193,8 +193,8 @@ public class Message implements Serializable {
                 ", unread=" + unread +
                 ", messageTag=" + messageTag +
                 ", messageAttachment=" + messageAttachment +
-                ", account=" + account +
-                ", folder=" + folder +
+//                ", account=" + account +
+//                ", folder=" + folder +
                 '}';
     }
 }

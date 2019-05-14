@@ -5,6 +5,6 @@ import uns.ac.rs.Mail.entity.Message;
 
 import java.util.List;
 
-public interface MessageRepository extends JpaRepository<Message, Integer> {
+public interface MessageRepository extends JpaRepository<Message, Long> {
     List<Message> findAllByOrderByDateTime();
 }

@@ -25,8 +25,8 @@ public class FolderService implements FolderServiceInterface {
         return folderRepository.findAll();
     }
 
-    @Override
-    public List<Folder> findByAccount(Account account) {
-        return folderRepository.findByAccount(account);
-    }
+//    @Override
+//    public List<Folder> findByAccount(Account account) {
+//        return folderRepository.findByAccount(account);
+//    }
 }

@@ -9,6 +9,6 @@ public interface FolderServiceInterface {
 
     Folder findOne(Integer folderId);
     List<Folder> findAll();
-    List<Folder> findByAccount(Account account);
+//    List<Folder> findByAccount(Account account);
 
 }

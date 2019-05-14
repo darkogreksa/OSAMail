@@ -35,14 +35,14 @@ public class FolderController {
         return new ResponseEntity<List<FolderDTO>>(foldersDTO, HttpStatus.OK);
     }
 
-    @GetMapping(value="/folder/{id}")
-    public ResponseEntity<List<FolderDTO>> getFolderByAccount(@PathVariable("id") Integer id){
-        List<Folder> folders = folderService.findByAccount(accountService.findOne(id));
-        List<FolderDTO> folderDTO = new ArrayList<FolderDTO>();
-        for (Folder f : folders) {
-            folderDTO.add(new FolderDTO(f));
-        }
-        return new ResponseEntity<List<FolderDTO>>(folderDTO, HttpStatus.OK);
-    }
+//    @GetMapping(value="/folder/{id}")
+//    public ResponseEntity<List<FolderDTO>> getFolderByAccount(@PathVariable("id") Integer id){
+//        List<Folder> folders = folderService.findByAccount(accountService.findOne(id));
+//        List<FolderDTO> folderDTO = new ArrayList<FolderDTO>();
+//        for (Folder f : folders) {
+//            folderDTO.add(new FolderDTO(f));
+//        }
+//        return new ResponseEntity<List<FolderDTO>>(folderDTO, HttpStatus.OK);
+//    }
 
 }

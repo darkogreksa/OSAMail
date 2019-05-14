@@ -9,19 +9,20 @@ import org.springframework.web.bind.annotation.RestController;
 import uns.ac.rs.Mail.dto.MessageDTO;
 import uns.ac.rs.Mail.entity.Message;
 import uns.ac.rs.Mail.service.MessageServiceInterface;
+import uns.ac.rs.Mail.service.impl.MessageService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/messages")
+@RequestMapping(value="api/messages")
 public class MessageController {
 
     @Autowired
-    MessageServiceInterface messageService;
+    MessageService messageService;
 
     @GetMapping(value="/all")
-    public ResponseEntity<List<MessageDTO>> getAccounts(){
+    public ResponseEntity<List<MessageDTO>> getMessages(){
         List<Message> messages = messageService.findAll();
         List<MessageDTO> messageDTO = new ArrayList<MessageDTO>();
         for (Message m : messages) {

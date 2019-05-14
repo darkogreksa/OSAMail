@@ -7,5 +7,5 @@ import uns.ac.rs.Mail.entity.Folder;
 import java.util.List;
 
 public interface FolderRepository extends JpaRepository<Folder, Integer> {
-    List<Folder> findByAccount(Account account);
+//    List<Folder> findByAccount(Account account);
 }

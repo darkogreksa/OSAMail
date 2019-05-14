@@ -9,22 +9,21 @@ public class FolderDTO implements Serializable {
     private Long id;
     private String name;
     private Rule destination;
-    private Folder parentFolder;
-    private AccountDTO account;
+    private Double parentFolder;
+//    private AccountDTO account;
 
     public FolderDTO() {
     }
 
-    public FolderDTO(Long id, String name, Rule destination, Folder parentFolder, AccountDTO account) {
+    public FolderDTO(Long id, String name, Rule destination, Double parentFolder) {
         this.id = id;
         this.name = name;
         this.destination = destination;
         this.parentFolder = parentFolder;
-        this.account = account;
     }
 
     public FolderDTO(Folder folder) {
-        this(folder.getId(), folder.getName(), folder.getDestination(), folder.getParentFolder(), new AccountDTO(folder.getAccount()));
+        this(folder.getId(), folder.getName(), folder.getDestination(), folder.getParentFolder());
     }
 
     public Long getId() {
@@ -51,19 +50,19 @@ public class FolderDTO implements Serializable {
         this.destination = destination;
     }
 
-    public Folder getParentFolder() {
+    public Double getParentFolder() {
         return parentFolder;
     }
 
-    public void setParentFolder(Folder parentFolder) {
+    public void setParentFolder(Double parentFolder) {
         this.parentFolder = parentFolder;
     }
 
-    public AccountDTO getAccount() {
-        return account;
-    }
-
-    public void setAccount(AccountDTO account) {
-        this.account = account;
-    }
+//    public AccountDTO getAccount() {
+//        return account;
+//    }
+//
+//    public void setAccount(AccountDTO account) {
+//        this.account = account;
+//    }
 }

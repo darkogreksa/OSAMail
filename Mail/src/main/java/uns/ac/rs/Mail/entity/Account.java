@@ -40,13 +40,13 @@ public class Account implements Serializable {
     @Column(name = "display_name", unique = false, nullable = false)
     private String displayName;
 
-    @OneToMany(cascade={ALL}, fetch=FetchType.LAZY, mappedBy = "account")
-    private Set<Message> accountMessage = new HashSet<Message>();
+//    @OneToMany(cascade={ALL}, fetch=FetchType.LAZY, mappedBy = "account")
+//    private Set<Message> accountMessage = new HashSet<Message>();
 
-    @OneToMany(cascade={ALL}, fetch=FetchType.LAZY, mappedBy = "account")
-    private Set<Folder> accountFolder = new HashSet<Folder>();
+//    @OneToMany(cascade={ALL}, fetch=FetchType.LAZY, mappedBy = "account")
+//    private Set<Folder> accountFolder = new HashSet<Folder>();
 
-    public Account(Long id, String smtpAddress, Integer smtpPort, Integer inServerType, String inServerAddress, Integer inServerPort, String username, String password, String displayName, Set<Message> accountMessage, Set<Folder> accountFolder) {
+    public Account(Long id, String smtpAddress, Integer smtpPort, Integer inServerType, String inServerAddress, Integer inServerPort, String username, String password, String displayName) {
         this.id = id;
         this.smtpAddress = smtpAddress;
         this.smtpPort = smtpPort;
@@ -56,8 +56,8 @@ public class Account implements Serializable {
         this.username = username;
         this.password = password;
         this.displayName = displayName;
-        this.accountMessage = accountMessage;
-        this.accountFolder = accountFolder;
+//        this.accountMessage = accountMessage;
+//        this.accountFolder = accountFolder;
     }
 
     public Account() {
@@ -135,21 +135,21 @@ public class Account implements Serializable {
         this.displayName = displayName;
     }
 
-    public Set<Message> getAccountMessage() {
-        return accountMessage;
-    }
+//    public Set<Message> getAccountMessage() {
+//        return accountMessage;
+//    }
+//
+//    public void setAccountMessage(Set<Message> accountMessage) {
+//        this.accountMessage = accountMessage;
+//    }
 
-    public void setAccountMessage(Set<Message> accountMessage) {
-        this.accountMessage = accountMessage;
-    }
-
-    public Set<Folder> getAccountFolder() {
-        return accountFolder;
-    }
-
-    public void setAccountFolder(Set<Folder> accountFolder) {
-        this.accountFolder = accountFolder;
-    }
+//    public Set<Folder> getAccountFolder() {
+//        return accountFolder;
+//    }
+//
+//    public void setAccountFolder(Set<Folder> accountFolder) {
+//        this.accountFolder = accountFolder;
+//    }
 
     @Override
     public String toString() {
@@ -163,8 +163,8 @@ public class Account implements Serializable {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", displayName='" + displayName + '\'' +
-                ", accountMessage=" + accountMessage +
-                ", accountFolder=" + accountFolder +
+//                ", accountMessage=" + accountMessage +
+//                ", accountFolder=" + accountFolder +
                 '}';
     }
 }

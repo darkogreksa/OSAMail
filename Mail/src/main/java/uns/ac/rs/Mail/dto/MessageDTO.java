@@ -16,14 +16,14 @@ public class MessageDTO implements Serializable {
     private String subject;
     private String content;
     private Boolean unread;
-    private Tag messageTag;
-    private AccountDTO account;
-    private FolderDTO folder;
+    private Double messageTag;
+//    private AccountDTO account;
+//    private FolderDTO folder;
 
     public MessageDTO() {
     }
 
-    public MessageDTO(Long id, String from, String to, String cc, String bcc, Date dateTime, String subject, String content, Boolean unread, Tag messageTag, AccountDTO account, FolderDTO folder) {
+    public MessageDTO(Long id, String from, String to, String cc, String bcc, Date dateTime, String subject, String content, Boolean unread, Double messageTag) {
         this.id = id;
         this.from = from;
         this.to = to;
@@ -34,12 +34,12 @@ public class MessageDTO implements Serializable {
         this.content = content;
         this.unread = unread;
         this.messageTag = messageTag;
-        this.account = account;
-        this.folder = folder;
+//        this.account = account;
+//        this.folder = folder;
     }
 
     public MessageDTO(Message message) {
-        this(message.getId(), message.getFrom(), message.getTo(), message.getCc(), message.getBcc(), message.getDateTime(), message.getSubject(), message.getContent(), message.getUnread(), message.getMessageTag(), new AccountDTO(message.getAccount()), new FolderDTO(message.getFolder()) );
+        this(message.getId(), message.getFrom(), message.getTo(), message.getCc(), message.getBcc(), message.getDateTime(), message.getSubject(), message.getContent(), message.getUnread(), message.getMessageTag());
     }
 
 
@@ -115,27 +115,27 @@ public class MessageDTO implements Serializable {
         this.unread = unread;
     }
 
-    public Tag getMessageTag() {
+    public Double getMessageTag() {
         return messageTag;
     }
 
-    public void setMessageTag(Tag messageTag) {
+    public void setMessageTag(Double messageTag) {
         this.messageTag = messageTag;
     }
 
-    public AccountDTO getAccount() {
-        return account;
-    }
-
-    public void setAccount(AccountDTO account) {
-        this.account = account;
-    }
-
-    public FolderDTO getFolder() {
-        return folder;
-    }
-
-    public void setFolder(FolderDTO folder) {
-        this.folder = folder;
-    }
+//    public AccountDTO getAccount() {
+//        return account;
+//    }
+//
+//    public void setAccount(AccountDTO account) {
+//        this.account = account;
+//    }
+//
+//    public FolderDTO getFolder() {
+//        return folder;
+//    }
+//
+//    public void setFolder(FolderDTO folder) {
+//        this.folder = folder;
+//    }
 }

@@ -15,7 +15,7 @@ public class MessageService implements MessageServiceInterface {
     MessageRepository messageRepository;
 
     @Override
-    public Message findOne(Integer msgId) {
+    public Message findOne(Long msgId) {
         return messageRepository.findById(msgId).get();
     }
 
