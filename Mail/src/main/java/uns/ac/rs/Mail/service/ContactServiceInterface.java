@@ -6,7 +6,8 @@ import java.util.List;
 
 public interface ContactServiceInterface {
 
-    Contact findOne(Integer contactId);
+    Contact findOne(Long contactId);
     List<Contact> findAll();
-
+    Contact save(Contact contact);
+    void remove(Long contactId);
 }

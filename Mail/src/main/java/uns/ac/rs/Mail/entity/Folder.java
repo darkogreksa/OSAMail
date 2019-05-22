@@ -21,7 +21,7 @@ public class Folder implements Serializable {
     private String name;
 
     @Column(name = "destination", unique = false, nullable = false)
-    private Rule destination;
+    private String destination;
 
     @Column(name = "parent_folder", unique = false, nullable = false)
     private Double parentFolder;
@@ -36,7 +36,7 @@ public class Folder implements Serializable {
     public Folder() {
     }
 
-    public Folder(Long id, String name, Rule destination, Double parentFolder) {
+    public Folder(Long id, String name, String destination, Double parentFolder) {
         this.id = id;
         this.name = name;
         this.destination = destination;
@@ -61,11 +61,11 @@ public class Folder implements Serializable {
         this.name = name;
     }
 
-    public Rule getDestination() {
+    public String getDestination() {
         return destination;
     }
 
-    public void setDestination(Rule destination) {
+    public void setDestination(String destination) {
         this.destination = destination;
     }
 

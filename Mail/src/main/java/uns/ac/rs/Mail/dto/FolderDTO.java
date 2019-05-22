@@ -8,14 +8,14 @@ import java.io.Serializable;
 public class FolderDTO implements Serializable {
     private Long id;
     private String name;
-    private Rule destination;
+    private String destination;
     private Double parentFolder;
 //    private AccountDTO account;
 
     public FolderDTO() {
     }
 
-    public FolderDTO(Long id, String name, Rule destination, Double parentFolder) {
+    public FolderDTO(Long id, String name, String destination, Double parentFolder) {
         this.id = id;
         this.name = name;
         this.destination = destination;
@@ -42,11 +42,11 @@ public class FolderDTO implements Serializable {
         this.name = name;
     }
 
-    public Rule getDestination() {
+   public String getDestination() {
         return destination;
     }
 
-    public void setDestination(Rule destination) {
+    public void setDestination(String destination) {
         this.destination = destination;
     }
 

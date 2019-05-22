@@ -28,14 +28,62 @@ public class ContactController {
         return new ResponseEntity<List<ContactDTO>>(contactsDTO, HttpStatus.OK);
     }
 
-    //getOne po ID
+    //getOne
+    @GetMapping(value="/{id}")
+    public ResponseEntity<ContactDTO> getContact(@PathVariable("id") Long id) {
+
+        Contact contact = contactService.findOne(id);
+        if (contact == null) {
+            return new ResponseEntity<ContactDTO>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<ContactDTO>(new ContactDTO(contact), HttpStatus.OK);
+
+    }
 
     @PostMapping(consumes="application/json")
     public ResponseEntity<ContactDTO> saveContact(@RequestBody ContactDTO contactDTO){
 
+        Contact contact = new Contact();
 
+        contact.setFirstName(contactDTO.getFirstname());
+        contact.setLastName(contactDTO.getLastname());
+        contact.setEmail(contactDTO.getEmail());
+        contact.setDisplay(contactDTO.getDisplay());
+        contact.setNote(contactDTO.getDisplay());
 
-        return new ResponseEntity<>(HttpStatus.OK);
+//        post.setAuthor(userService.findOne(postDTO.getAuthor().getId()));
+        contact = contactService.save(contact);
+
+        return new ResponseEntity<ContactDTO>(new ContactDTO(contact), HttpStatus.CREATED);
+    }
+
+    @PutMapping(value="/{id}",consumes="application/json")
+    public ResponseEntity<ContactDTO> updateContact(@RequestBody ContactDTO contactDTO,@PathVariable("id") Long id){
+        Contact contact = contactService.findOne(id);
+
+        if(contact == null) {
+            return new ResponseEntity<ContactDTO>(HttpStatus.NOT_FOUND);
+        }
+        contact.setFirstName(contactDTO.getFirstname());
+        contact.setLastName(contactDTO.getLastname());
+        contact.setEmail(contactDTO.getEmail());
+        contact.setDisplay(contactDTO.getDisplay());
+        contact.setNote(contactDTO.getDisplay());
+
+        contact = contactService.save(contact);
+
+        return new ResponseEntity<ContactDTO>(HttpStatus.OK);
+    }
+
+    @DeleteMapping(value="/{id}")
+    public ResponseEntity<Void> deleteContact(@PathVariable Long id){
+        Contact contact = contactService.findOne(id);
+        if(contact != null) {
+            contactService.remove(id);
+            return new ResponseEntity<Void>(HttpStatus.OK);
+        }else {
+            return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+        }
     }
 
 }

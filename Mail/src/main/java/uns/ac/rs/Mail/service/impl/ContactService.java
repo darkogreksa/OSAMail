@@ -15,12 +15,22 @@ public class ContactService implements ContactServiceInterface {
     ContactRepository contactRepository;
 
     @Override
-    public Contact findOne(Integer contactId) {
+    public Contact findOne(Long contactId) {
         return contactRepository.findById(contactId).get();
     }
 
     @Override
     public List<Contact> findAll() {
         return contactRepository.findAll();
+    }
+
+    @Override
+    public Contact save(Contact contact) {
+        return contactRepository.save(contact);
+    }
+
+    @Override
+    public void remove(Long contactId) {
+        contactRepository.deleteById(contactId);
     }
 }
