@@ -16,7 +16,7 @@ public class FolderService implements FolderServiceInterface {
     FolderRepository folderRepository;
 
     @Override
-    public Folder findOne(Integer folderId) {
+    public Folder findOne(Long folderId) {
         return folderRepository.findById(folderId).get();
     }
 
@@ -29,4 +29,14 @@ public class FolderService implements FolderServiceInterface {
 //    public List<Folder> findByAccount(Account account) {
 //        return folderRepository.findByAccount(account);
 //    }
+
+    @Override
+    public Folder save(Folder folder) {
+        return folderRepository.save(folder);
+    }
+
+    @Override
+    public void remove(Long folderId) {
+        folderRepository.deleteById(folderId);
+    }
 }
