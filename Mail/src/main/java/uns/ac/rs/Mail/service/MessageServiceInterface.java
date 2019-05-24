@@ -6,8 +6,10 @@ import java.util.List;
 
 public interface MessageServiceInterface {
 
-    Message findOne(Long msgId);
+    Message findOne(Long messageId);
     List<Message> findAll();
-    List<Message> findAllOrderByDate();
-
+    List<Message> findAllOrderByDateAsc();
+    List<Message> findAllOrderByDateDesc();
+    Message save(Message message);
+    void remove(Long messageId);
 }

@@ -40,7 +40,7 @@ public class ContactController {
 
     }
 
-    @PostMapping(consumes="application/json")
+    @PostMapping(value="/add", consumes="application/json")
     public ResponseEntity<ContactDTO> saveContact(@RequestBody ContactDTO contactDTO){
 
         Contact contact = new Contact();
@@ -57,7 +57,7 @@ public class ContactController {
         return new ResponseEntity<ContactDTO>(new ContactDTO(contact), HttpStatus.CREATED);
     }
 
-    @PutMapping(value="/{id}",consumes="application/json")
+    @PutMapping(value="/update/{id}", consumes="application/json")
     public ResponseEntity<ContactDTO> updateContact(@RequestBody ContactDTO contactDTO,@PathVariable("id") Long id){
         Contact contact = contactService.findOne(id);
 
@@ -75,7 +75,7 @@ public class ContactController {
         return new ResponseEntity<ContactDTO>(HttpStatus.OK);
     }
 
-    @DeleteMapping(value="/{id}")
+    @DeleteMapping(value="/delete/{id}")
     public ResponseEntity<Void> deleteContact(@PathVariable Long id){
         Contact contact = contactService.findOne(id);
         if(contact != null) {

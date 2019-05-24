@@ -15,8 +15,8 @@ public class MessageService implements MessageServiceInterface {
     MessageRepository messageRepository;
 
     @Override
-    public Message findOne(Long msgId) {
-        return messageRepository.findById(msgId).get();
+    public Message findOne(Long messageId) {
+        return messageRepository.findById(messageId).get();
     }
 
     @Override
@@ -25,8 +25,23 @@ public class MessageService implements MessageServiceInterface {
     }
 
     @Override
-    public List<Message> findAllOrderByDate() {
-        return messageRepository.findAllByOrderByDateTime();
+    public List<Message> findAllOrderByDateAsc() {
+        return messageRepository.findAllByOrderByDateTimeAsc();
+    }
+
+    @Override
+    public List<Message> findAllOrderByDateDesc() {
+        return messageRepository.findAllByOrderByDateTimeDesc();
+    }
+
+    @Override
+    public Message save(Message message) {
+        return messageRepository.save(message);
+    }
+
+    @Override
+    public void remove(Long messageId) {
+        messageRepository.deleteById(messageId);
     }
 
 }

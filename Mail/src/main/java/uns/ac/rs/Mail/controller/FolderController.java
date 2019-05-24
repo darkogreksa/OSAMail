@@ -41,7 +41,7 @@ public class FolderController {
         return new ResponseEntity<FolderDTO>(new FolderDTO(folder), HttpStatus.OK);
     }
 
-    @PostMapping(consumes="application/json")
+    @PostMapping(value="/add", consumes="application/json")
     public ResponseEntity<FolderDTO> saveFolder(@RequestBody FolderDTO folderDTO) {
         Folder folder = new Folder();
 
@@ -53,7 +53,7 @@ public class FolderController {
         return new ResponseEntity<FolderDTO>(new FolderDTO(folder), HttpStatus.CREATED);
     }
 
-    @PutMapping(value="/{id}",consumes="application/json")
+    @PutMapping(value="/update/{id}", consumes="application/json")
     public ResponseEntity<FolderDTO> updateFolder(@RequestBody FolderDTO folderDTO, @PathVariable("id") Long id) {
         Folder folder = new Folder();
 
@@ -69,7 +69,7 @@ public class FolderController {
         return new ResponseEntity<FolderDTO>(HttpStatus.OK);
     }
 
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping(value="/delete/{id}")
     public ResponseEntity<Void> deleteFolder(@PathVariable Long id) {
         Folder folder = folderService.findOne(id);
         if (folder != null) {

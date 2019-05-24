@@ -7,8 +7,10 @@ INSERT INTO contact (contact_id, first_name, last_name, email, display, note) VA
 INSERT INTO tag (tag_id, name) VALUES (1, 'hitno')
 INSERT INTO tag (tag_id, name) VALUES (2, 'vazno')
 
-INSERT INTO folder (folder_id, name, destination, parent_folder) VALUES (1, "folder1", 0, 0)
+INSERT INTO folder (folder_id, name, destination, parent_folder) VALUES (1, "Inbox", 0, 0)
+INSERT INTO folder (folder_id, name, destination, parent_folder) VALUES (2, "Drafts", 0, 0)
+INSERT INTO folder (folder_id, name, destination, parent_folder) VALUES (3, "Outbox", 0, 0)
 
-INSERT INTO message (message_id, from1, to1, cc, bcc, date_time, subject, content, unread, message_tag) VALUES (1, "a", "To", "Cc", "Bcc", "2019-05-11", "Subject", "Content", false, 1)
-INSERT INTO message (message_id, from1, to1, cc, bcc, date_time, subject, content, unread, message_tag) VALUES (2, "a", "To", "Cc", "Bcc", "2019-05-12", "Subject", "Content", false, 1)
-INSERT INTO message (message_id, from1, to1, cc, bcc, date_time, subject, content, unread, message_tag) VALUES (3, "a", "To", "Cc", "Bcc", "2019-05-13", "Subject", "Content", false, 1)
+INSERT INTO message (message_id, from1, to1, cc, bcc, date_time, subject, content, unread, message_tag) VALUES (1, "a", "Marko", "Cc", "Bcc", "2019-05-11", "Subject", "Content", false, 1)
+INSERT INTO message (message_id, from1, to1, cc, bcc, date_time, subject, content, unread, message_tag) VALUES (2, "zika", "Marko", "Cc", "Bcc", "2019-05-12", "Subject", "Content", false, 1)
+INSERT INTO message (message_id, from1, to1, cc, bcc, date_time, subject, content, unread, message_tag) VALUES (3, "zika", "Lazar", "Cc", "Bcc", "2019-05-13", "Subject", "Content", false, 1)
